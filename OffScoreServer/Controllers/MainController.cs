@@ -11,6 +11,6 @@ namespace OffScoreServer.Controllers
     [ApiController]
     public class MainController : ControllerBase
     {
-
+        
     }
 }

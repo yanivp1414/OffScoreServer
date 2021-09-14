@@ -9,12 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DatabaseScripts\" />
-    <Folder Include="DataTransferObjects\" />
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\OffScoreServerBL\OffScoreServerBL.csproj" />
   </ItemGroup>
 
