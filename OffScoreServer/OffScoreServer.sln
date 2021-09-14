@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OffScoreServer", "OffScoreServer.csproj", "{42A87F23-2FDF-4885-B50C-CF885B4881CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OffScoreServerBL", "..\OffScoreServerBL\OffScoreServerBL.csproj", "{B1519AE2-F377-41A4-9A36-35F07ACEE346}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42A87F23-2FDF-4885-B50C-CF885B4881CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A87F23-2FDF-4885-B50C-CF885B4881CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A87F23-2FDF-4885-B50C-CF885B4881CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A87F23-2FDF-4885-B50C-CF885B4881CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1519AE2-F377-41A4-9A36-35F07ACEE346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1519AE2-F377-41A4-9A36-35F07ACEE346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1519AE2-F377-41A4-9A36-35F07ACEE346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1519AE2-F377-41A4-9A36-35F07ACEE346}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F0EFB9F-8A21-44BF-B9A4-E2AF55477017}
+	EndGlobalSection
+EndGlobal
