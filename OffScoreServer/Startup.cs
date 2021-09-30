@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using OffScoreServer.Models;
+using OffScoreServerBL.ModelsBL;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
@@ -48,9 +48,9 @@ namespace OffScoreServer
             #endregion
 
             #region Add DB Context Support
-            string connectionString = this.Configuration.GetConnectionString("MenU");
+            string connectionString = this.Configuration.GetConnectionString("OffScore");
 
-            services.AddDbContext<MenUContext>(options => options
+            services.AddDbContext<OffScoreContext>(options => options
                                                                 .UseLazyLoadingProxies()
                                                                 .UseSqlServer(connectionString));
             #endregion
