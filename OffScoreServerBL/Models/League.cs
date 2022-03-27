@@ -6,16 +6,17 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace OffScoreServerBL.ModelsBL
+namespace OffScoreServerBL.Models
 {
     [Table("League")]
     [Index(nameof(Country), Name = "league_country_index")]
-    [Index(nameof(LegueName), Name = "league_leguename_unique", IsUnique = true)]
+    [Index(nameof(LeagueName), Name = "league_leguename_unique", IsUnique = true)]
     public partial class League
     {
         public League()
         {
-            Teams = new HashSet<Team>();
+            TeamGlobalLeagues = new HashSet<Team>();
+            TeamLocalLeagues = new HashSet<Team>();
         }
 
         [Key]
@@ -25,9 +26,11 @@ namespace OffScoreServerBL.ModelsBL
         public string Country { get; set; }
         [Required]
         [StringLength(255)]
-        public string LegueName { get; set; }
+        public string LeagueName { get; set; }
 
-        [InverseProperty(nameof(Team.League))]
-        public virtual ICollection<Team> Teams { get; set; }
+        [InverseProperty(nameof(Team.GlobalLeague))]
+        public virtual ICollection<Team> TeamGlobalLeagues { get; set; }
+        [InverseProperty(nameof(Team.LocalLeague))]
+        public virtual ICollection<Team> TeamLocalLeagues { get; set; }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace OffScoreServerBL.ModelsBL
+namespace OffScoreServerBL.Models
 {
     public partial class OffScoreContext : DbContext
     {
@@ -41,7 +39,7 @@ namespace OffScoreServerBL.ModelsBL
 
             modelBuilder.Entity<Account>(entity =>
             {
-                entity.Property(e => e.AccountId).ValueGeneratedNever();
+                entity.Property(e => e.ActivitySatus).HasDefaultValueSql("((1))");
 
                 entity.HasOne(d => d.ActivitySatusNavigation)
                     .WithMany(p => p.Accounts)
@@ -54,13 +52,11 @@ namespace OffScoreServerBL.ModelsBL
             {
                 entity.HasKey(e => e.StatusId)
                     .HasName("activitystatus_statusid_primary");
-
-                entity.Property(e => e.StatusId).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<Game>(entity =>
             {
-                entity.Property(e => e.GameId).ValueGeneratedNever();
+                entity.Property(e => e.ActivityStatus).HasDefaultValueSql("((1))");
 
                 entity.HasOne(d => d.ActivityStatusNavigation)
                     .WithMany(p => p.Games)
@@ -83,7 +79,9 @@ namespace OffScoreServerBL.ModelsBL
 
             modelBuilder.Entity<Guess>(entity =>
             {
-                entity.Property(e => e.GuessId).ValueGeneratedNever();
+                entity.Property(e => e.ActivityStatus).HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.GuessingTime).HasDefaultValueSql("(getdate())");
 
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Guesses)
@@ -104,20 +102,19 @@ namespace OffScoreServerBL.ModelsBL
                     .HasConstraintName("guess_gameid_foreign");
             });
 
-            modelBuilder.Entity<League>(entity =>
-            {
-                entity.Property(e => e.LeagueId).ValueGeneratedNever();
-            });
-
             modelBuilder.Entity<Team>(entity =>
             {
-                entity.Property(e => e.TeamId).ValueGeneratedNever();
-
-                entity.HasOne(d => d.League)
-                    .WithMany(p => p.Teams)
-                    .HasForeignKey(d => d.LeagueId)
+                entity.HasOne(d => d.GlobalLeague)
+                    .WithMany(p => p.TeamGlobalLeagues)
+                    .HasForeignKey(d => d.GlobalLeagueId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("team_leagueid_foreign");
+                    .HasConstraintName("team_globalleagueid_foreign");
+
+                entity.HasOne(d => d.LocalLeague)
+                    .WithMany(p => p.TeamLocalLeagues)
+                    .HasForeignKey(d => d.LocalLeagueId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("team_localleagueid_foreign");
             });
 
             OnModelCreatingPartial(modelBuilder);

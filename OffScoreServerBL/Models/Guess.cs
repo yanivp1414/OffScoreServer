@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace OffScoreServerBL.ModelsBL
+namespace OffScoreServerBL.Models
 {
     [Table("Guess")]
     public partial class Guess
