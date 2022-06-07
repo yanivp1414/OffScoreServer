@@ -51,7 +51,7 @@ namespace OffScoreServer
             string connectionString = this.Configuration.GetConnectionString("OffScore");
 
             services.AddDbContext<OffScoreContext>(options => options
-                                                                .UseLazyLoadingProxies()
+                                                                /*.UseLazyLoadingProxies()*/
                                                                 .UseSqlServer(connectionString));
             #endregion
         }
